@@ -3,41 +3,41 @@ let playerHealth = 100;
 let playerAttack = 10;
 let playerMoney = 10
 
-const enemyName = "Thagalfor";
+const enemyNames = "Thagalfor"
 let enemyHealth = 50;
 let enemyAttack = 12;
 
-const fight = function fight() {
-    window.alert("Welcome to the Arena!");
 
-    let promptFight = confirm("Would you like to skip this fight?");
-    if (promptFight = false) {
+
+function fight() {
+    alert("Welcome to the Arena!");
+
+    const promptFight = prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+
+    if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "Fight") {
         enemyHealth -= playerAttack;
-
+        console.log(playerName + " attacked " + enemyNames + ". " + enemyNames + " has "  + enemyHealth + " HP left!");
         if (enemyHealth <= 0) {
             enemyHealth = 0;
-            alert("Fuck " + enemyName + ", you killed the shit out of them!");
+            alert("You have reduced " + enemyNames + "'s HP to " + enemyHealth);
         } else {
-            alert(enemyName + " now has " + enemyHealth + " HP left!");
-        };
+            alert("You have reduced " + enemyNames + "'s HP to " + enemyHealth);   
+        }
 
         playerHealth -= enemyAttack;
+        console.log(enemyNames + " attacked " + playerName + ". " + playerName + " has "  + playerHealth + " HP left!");
         if (playerHealth <= 0) {
             playerHealth = 0;
-            alert(playerName + " died, fucking loser...");
+            alert(playerName + " has been reduced to " + playerHealth + " HP.");
         } else {
-            alert(playerName + " still has " + playerHealth + " HP!");
-        }
+            alert(playerName + " has been reduced to " + playerHealth + " HP.");  
+        };
+    } else if (promptFight === "skip" || promptFight === "SKIP" || promptFight === "Skip") {
+        alert(playerName + " has opted to skip this fight.");
     } else {
-        let skipConfirm = confirm("Are you sure you want to skip this fight?");
-        if (skipConfirm = true) {
-            alert(playerName + " has pussied out and skipped this fight.");
-
-            playerMoney -= 3;
-        } else {
-            fight();
-        }
+        alert("Please choose a valid option.");
+        fight();
     }
-};
+}
 
 fight();
